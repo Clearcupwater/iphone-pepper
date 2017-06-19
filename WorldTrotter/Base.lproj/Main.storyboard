@@ -6,10 +6,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Conversion View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="WorldTrotter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ConversionViewController" customModule="WorldTrotter" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -38,11 +38,17 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="212" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ROK-6P-4CA">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Value" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UJz-0n-Ayn">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="xI5-IW-xla"/>
+                                </constraints>
+                                <color key="textColor" red="1" green="0.31932278949575821" blue="0.13034402103764486" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="70"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad" keyboardAppearance="alert"/>
+                                <connections>
+                                    <action selector="fahrenheitFieldEditingChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="Vej-Pc-F4o"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.96078431372549022" green="0.6193088657876944" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="0.96078431372549022" green="0.95686274509803915" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -51,19 +57,18 @@
                             <constraint firstItem="cCD-Po-XYw" firstAttribute="top" secondItem="X7M-mg-vlP" secondAttribute="bottom" constant="59" id="7RV-h9-npK"/>
                             <constraint firstItem="cCD-Po-XYw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Gor-aj-C8m"/>
                             <constraint firstItem="1h6-cX-SkC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Gsc-2H-JeL"/>
-                            <constraint firstItem="ROK-6P-4CA" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="I7D-aR-sot"/>
                             <constraint firstItem="X7M-mg-vlP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="KFh-8O-uns"/>
-                            <constraint firstItem="cCD-Po-XYw" firstAttribute="centerX" secondItem="ROK-6P-4CA" secondAttribute="centerX" id="WuC-cr-25d"/>
+                            <constraint firstItem="UJz-0n-Ayn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QVc-W3-8nA"/>
                             <constraint firstItem="X7M-mg-vlP" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="91" id="asB-NB-sWX"/>
-                            <constraint firstItem="ROK-6P-4CA" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="fCF-QV-eJQ"/>
-                            <constraint firstItem="1h6-cX-SkC" firstAttribute="centerX" secondItem="ROK-6P-4CA" secondAttribute="centerX" id="hdV-io-bGC"/>
-                            <constraint firstItem="ROK-6P-4CA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kzA-Kc-XZH"/>
                             <constraint firstItem="nDV-qC-hcf" firstAttribute="top" secondItem="cCD-Po-XYw" secondAttribute="bottom" constant="31" id="lu4-gS-Djh"/>
-                            <constraint firstItem="X7M-mg-vlP" firstAttribute="centerX" secondItem="ROK-6P-4CA" secondAttribute="centerX" id="sPm-fI-dTd"/>
+                            <constraint firstItem="X7M-mg-vlP" firstAttribute="top" secondItem="UJz-0n-Ayn" secondAttribute="bottom" constant="8" id="p0f-lZ-fKr"/>
+                            <constraint firstItem="UJz-0n-Ayn" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="rGr-Sg-7ca"/>
                             <constraint firstItem="1h6-cX-SkC" firstAttribute="top" secondItem="nDV-qC-hcf" secondAttribute="bottom" constant="31" id="vob-Qs-Gaz"/>
-                            <constraint firstItem="nDV-qC-hcf" firstAttribute="centerX" secondItem="ROK-6P-4CA" secondAttribute="centerX" constant="-1" id="xee-zo-C5j"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="celsiusLabel" destination="nDV-qC-hcf" id="ZdR-N4-YXm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
