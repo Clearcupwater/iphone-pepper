@@ -52,6 +52,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.96078431372549022" green="0.6193088657876944" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="0.96078431372549022" green="0.95686274509803915" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="nDV-qC-hcf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-1" id="2hi-Qa-eL0"/>
                             <constraint firstItem="cCD-Po-XYw" firstAttribute="top" secondItem="X7M-mg-vlP" secondAttribute="bottom" constant="59" id="7RV-h9-npK"/>
@@ -65,12 +66,21 @@
                             <constraint firstItem="UJz-0n-Ayn" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="rGr-Sg-7ca"/>
                             <constraint firstItem="1h6-cX-SkC" firstAttribute="top" secondItem="nDV-qC-hcf" secondAttribute="bottom" constant="31" id="vob-Qs-Gaz"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="yMh-Sm-bsN" appends="YES" id="Ag8-cA-2ox"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="celsiusLabel" destination="nDV-qC-hcf" id="ZdR-N4-YXm"/>
+                        <outlet property="textField" destination="UJz-0n-Ayn" id="mQh-5e-iaz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="yMh-Sm-bsN">
+                    <connections>
+                        <action selector="dismissKeyboard:" destination="BYZ-38-t0r" id="8Pa-er-AOl"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="24.800000000000001" y="36.431784107946029"/>
         </scene>
