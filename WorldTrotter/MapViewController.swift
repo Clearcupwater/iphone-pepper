@@ -11,6 +11,7 @@ import MapKit
 
 class MapViewController: UIViewController {
     
+    
     var mapView: MKMapView!
     
     override func loadView() {
@@ -24,14 +25,31 @@ class MapViewController: UIViewController {
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(segmentedControl)
         
-        let topConstraint = segmentedControl.topAnchor.constraint(equalTo: view.topAnchor)
-        let leadingConstraint = segmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor)
-        let trainingConstraint = segmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        let topConstraint = segmentedControl.topAnchor.constraint(equalTo:topLayoutGuide.bottomAnchor, constant: 8)
+        
+        let margins = view.layoutMarginsGuide
+        let leadingConstraint = segmentedControl.leadingAnchor.constraint(equalTo: margins.leadingAnchor)
+        let trainingConstraint = segmentedControl.trailingAnchor.constraint(equalTo: margins.trailingAnchor)
+        
+        segmentedControl.addTarget(self, action: #selector(self.mapTypeChanged(_:)), for: .valueChanged)
     
         topConstraint.isActive = true
         leadingConstraint.isActive = true
         trainingConstraint.isActive = true
         
+    }
+    
+    func mapTypeChanged(_ segControl: UISegmentedControl){
+        switch segControl.selectedSegmentIndex {
+        case 0:
+            mapView.mapType = .standard
+        case 1:
+            mapView.mapType = .hybrid
+        case 2:
+            mapView.mapType = .satellite
+        default:
+            break
+        }
     }
     
 
