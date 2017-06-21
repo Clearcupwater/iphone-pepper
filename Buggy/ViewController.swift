@@ -19,7 +19,27 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    @IBAction func buttonTapped (_ sender: UIButton){
+        print("Button is tapped")
+        
+        badMethod()
+        
+        print("\(#function), \(#file),\(#line)" )
+    }
+    
+    func badMethod() {
+        let array = NSMutableArray()
+        
+        for i in 0..<10 {
+            array.insert(i, at: i)
+            
+        }
+        
+        for _ in 0...10 {
+            array.remove(at:0)
+        }
+    }
 
 }
 
