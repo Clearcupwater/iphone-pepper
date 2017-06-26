@@ -61,7 +61,7 @@ struct FlickrAPI {
     
     
     static var interestingPhotosURL: URL {
-        return flickrURL(method: .interestingPhotos, parameter: ["extras": "url_h,date_take"])
+        return flickrURL(method: .interestingPhotos, parameter: ["extras": "url_h,date_taken"])
         
     }
     
