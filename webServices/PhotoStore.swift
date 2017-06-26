@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum PhotoResult {
+enum photosResult {
     case sucess([Photo])
     case failure(Error)
     
@@ -22,29 +22,28 @@ class PhotoStore {
         
     }()
     
-    func fetchInterestingPhotos() {
+    func fetchInterestingPhotos(completion: @escaping (photosResult)-> Void) {
         let url = FlickrAPI.interestingPhotosURL
         let request = URLRequest(url: url)
         let task = session.dataTask(with: request) {(data, response, error) -> Void in
-            
-            if let jsonData = data {
-                do {
-                    let jsonObject = try JSONSerialization.jsonObject(with: jsonData, options: [])
-                    print(jsonObject)
-                } catch let error {
-                    print("Error creating JSON object: \(error)")
-                }
-            }
-                else if let requestError = error {
-                    print ("Error fetching interestin photos: \(requestError)")
-                } else {
-                    print ("Unexpected error with the request")
-                }
-        
-        
+            let result = self.processPhotoRequest(data: data, error: error)
+            completion(result)
+            print("Function Completed")
+            print(result)
         }
-        task.resume()
+            task.resume()
+    }
+    private func processPhotoRequest(data: Data?, error: Error?) -> photosResult {
+        guard let jsonData = data else {
+            return .failure(error!)
+        }
+        
+        return FlickrAPI.photos(fromJSON: jsonData)
+        
     }
     
-}
+    
+    
+    
 
+}
