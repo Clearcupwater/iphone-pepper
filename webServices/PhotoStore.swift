@@ -36,7 +36,10 @@ class PhotoStore {
         let request = URLRequest(url: url)
         let task = session.dataTask(with: request) {(data, response, error) -> Void in
             let result = self.processPhotoRequest(data: data, error: error)
-            completion(result)
+            OperationQueue.main.addOperation {
+                completion(result)
+            }
+            
             print("Function Completed")
             print(result)
         }
@@ -59,7 +62,10 @@ class PhotoStore {
             (data, response, error) -> Void in
             
             let result = self.processImageRequest(data: data, error: error)
+            OperationQueue.main.addOperation {
                 completion(result)
+            }
+            
             
         }
         task.resume()
