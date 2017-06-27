@@ -6,12 +6,21 @@
 //  Copyright © 2017 Tadmin. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 enum photosResult {
     case sucess([Photo])
     case failure(Error)
     
+}
+
+enum ImageResult {
+    case sucess(UIImage)
+    case failure(Error)
+}
+
+enum PhotoError: Error {
+    case imageCreationError
 }
 
 class PhotoStore {
@@ -42,6 +51,38 @@ class PhotoStore {
         
     }
     
+    func fetchImage(for photo: Photo, completion: @escaping (ImageResult) -> Void) {
+        let photoUrl = photo.remoteURL
+        let request = URLRequest(url: photoUrl)
+        
+        let task = session.dataTask(with: request) {
+            (data, response, error) -> Void in
+            
+            let result = self.processImageRequest(data: data, error: error)
+                completion(result)
+            
+        }
+        task.resume()
+        
+    }
+    
+    
+    private func processImageRequest(data: Data?, error: Error?)-> ImageResult {
+        guard
+            let imageData = data,
+            let image = UIImage(data: imageData) else {
+                if data == nil {
+                    return .failure(error!)
+                } else {
+                    return .failure(PhotoError.imageCreationError)
+                }
+            }
+        
+         return .sucess(image)
+            
+        }
+        
+        
     
     
     
