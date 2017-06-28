@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="65"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cq0-lc-WMe" id="f9M-rx-b9D">
-                                    <frame key="frameInset" width="375" height="64"/>
+                                    <frame key="frameInset" width="375" height="65"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n1G-Ok-7y4">
@@ -86,7 +86,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="xXi-ha-cIX">
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="xXi-ha-cIX">
+                                <frame key="frameInset" minX="16" minY="-36" width="343" height="543"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="U8H-u2-JSg">
                                         <subviews>
@@ -138,20 +139,36 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="248" translatesAutoresizingMaskIntoConstraints="NO" id="LzA-2B-1RF"/>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="bJs-PY-usd" firstAttribute="leading" secondItem="YVF-QU-lDs" secondAttribute="leading" id="UTv-Zj-ZmP"/>
                                     <constraint firstItem="H3Y-Of-OZV" firstAttribute="leading" secondItem="bJs-PY-usd" secondAttribute="leading" id="Y0G-LZ-l2J"/>
                                 </constraints>
                             </stackView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LD4-kp-87u">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="4wC-sY-tQv"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem systemItem="camera" id="wBQ-GQ-c5j">
+                                        <connections>
+                                            <action selector="takePicture:" destination="xdc-Bh-leC" id="1pW-fW-0Dy"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="xXi-ha-cIX" firstAttribute="top" secondItem="y8f-Fn-nhz" secondAttribute="bottom" constant="8" id="DSh-YU-c5b"/>
+                            <constraint firstAttribute="trailing" secondItem="LD4-kp-87u" secondAttribute="trailing" id="KEQ-ZN-uKf"/>
                             <constraint firstAttribute="trailingMargin" secondItem="xXi-ha-cIX" secondAttribute="trailing" id="RcM-fF-ql5"/>
+                            <constraint firstItem="Sy5-vS-Pj7" firstAttribute="top" secondItem="LD4-kp-87u" secondAttribute="bottom" id="SPF-ro-0a2"/>
+                            <constraint firstItem="LD4-kp-87u" firstAttribute="leading" secondItem="xPg-Ip-IoS" secondAttribute="leading" id="XXS-8R-5h2"/>
+                            <constraint firstItem="LD4-kp-87u" firstAttribute="top" secondItem="xXi-ha-cIX" secondAttribute="bottom" constant="8" id="cd2-nF-FYo"/>
                             <constraint firstItem="xXi-ha-cIX" firstAttribute="leading" secondItem="xPg-Ip-IoS" secondAttribute="leadingMargin" id="dKh-hX-udq"/>
-                            <constraint firstItem="Sy5-vS-Pj7" firstAttribute="top" secondItem="xXi-ha-cIX" secondAttribute="bottom" constant="8" id="ou7-zM-nqD"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="xAG-M0-hSd" appends="YES" id="o4t-LX-0xB"/>
@@ -159,6 +176,7 @@
                     </view>
                     <connections>
                         <outlet property="dateLabel" destination="LX7-pV-1D4" id="lDm-TC-BHQ"/>
+                        <outlet property="imageView" destination="LzA-2B-1RF" id="FNd-ol-KgZ"/>
                         <outlet property="nameField" destination="YVF-QU-lDs" id="9Js-jU-OlI"/>
                         <outlet property="serialNumberField" destination="bJs-PY-usd" id="hg4-qy-Vqr"/>
                         <outlet property="valueField" destination="H3Y-Of-OZV" id="Xrl-2q-9An"/>
@@ -178,7 +196,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qXl-4s-5ms" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Rzc-nq-wfQ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Rzc-nq-wfQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
