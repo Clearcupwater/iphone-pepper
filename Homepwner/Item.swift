@@ -46,7 +46,7 @@ class Item: NSObject, NSCoding {
     
     func encode(with aCoder: NSCoder) {
         aCoder.encode(name, forKey: "name")
-        aCoder.encode(dateCreated, forKey: "datecreated")
+        aCoder.encode(dateCreated, forKey: "dateCreated")
         aCoder.encode(itemKey, forKey: "itemKey")
         aCoder.encode(serialNumber, forKey: "serialNumber")
         aCoder.encode(valueInDollars, forKey:"valueInDollars")
